@@ -1,3 +1,12 @@
+## Enlaces de visualización:
+
+Aquí puedes acceder a la documentación de **Inspector de Elementos**:
+
+- <a href="https://noeliakubaldo.github.io/docusaurus-manual-inspector/" target="_blank">Sitio en GitHub Pages</a>
+- <a href="https://948250274.facturalo.co/docusaurus/" target="_blank">Sitio en cPanel</a>
+
+Visita los enlaces para explorar el contenido.
+
 # Website
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
@@ -39,13 +48,3 @@ $ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
-## Enlaces de visualización:
-
-Aquí puedes acceder a la documentación de **Inspector de Elementos**:
-
-- <a href="https://noeliakubaldo.github.io/docusaurus-manual-inspector/" target="_blank">Sitio en GitHub Pages</a>
-- <a href="https://948250274.facturalo.co/docusaurus/" target="_blank">Sitio en cPanel</a>
-
-Visita los enlaces para explorar el contenido.
-
