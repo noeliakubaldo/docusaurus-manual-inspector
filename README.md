@@ -1,4 +1,4 @@
-## Enlaces de visualización:
+# Enlaces de visualización:
 
 Aquí puedes acceder a la documentación de **Inspector de Elementos**:
 
