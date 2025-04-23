@@ -10,9 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'Inspector de Elementos',
+  tagline: 'Herramienta esencial para desarrollo web',
+  favicon: 'img/insp.ico',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
@@ -32,8 +32,8 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'es',
+    locales: ['es'],
   },
 
   presets: [
@@ -73,60 +73,95 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Cargar fuentes y recursos externos
+      stylesheets: [
+        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+      ],
+      
+      // Barra de anuncios para mostrar info relevante
+      announcementBar: {
+        id: 'support_us',
+        content: '🔍 Aprende a dominar el Inspector de Elementos con nuestra <a href="/docs/introduccion">guía completa</a>',
+        backgroundColor: '#4285f420',
+        textColor: '#e8eaed',
+        isCloseable: true,
+      },
+      
+      // Personalizar el selector de tema
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
+      
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/devtools-social-card.jpg',
+      
+      // Configuración de la barra de navegación
       navbar: {
-        title: 'My Site',
+        title: 'Inspector de Elementos',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Inspector Logo',
+          src: 'img/insp-logo.svg',
         },
+        style: 'dark',
+        hideOnScroll: true,
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Guía',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://developer.mozilla.org/es/docs/Tools/Page_Inspector',
+            label: 'MDN Web Docs',
             position: 'right',
           },
         ],
       },
+      
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentación',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Introducción',
+                to: '/docs/introduccion',
+              },
+              {
+                label: 'Guía Rápida',
+                to: '/docs/guia-rapida',
+              },
+              {
+                label: 'Tutoriales',
+                to: '/docs/tutoriales',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Recursos',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Mozilla Developer Network',
+                href: 'https://developer.mozilla.org/es/docs/Tools',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Chrome DevTools',
+                href: 'https://developer.chrome.com/docs/devtools/',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'Can I Use',
+                href: 'https://caniuse.com/',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Más',
             items: [
               {
                 label: 'Blog',
@@ -139,11 +174,21 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Documentación del Inspector de Elementos. Construido con Docusaurus.`,
       },
+      
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        // He eliminado el objeto additionalLanguages que causaba el error
+      },
+      
+      // Personalización de la barra lateral de docs
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
       },
     }),
 };

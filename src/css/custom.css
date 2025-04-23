@@ -1,30 +1,723 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Tema personalizado para documentación del Inspector de Elementos
+ * Optimizado para ambos modos: claro y oscuro
  */
 
-/* You can override the default Infima variables here. */
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* Paleta de colores para modo claro */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Colores primarios - azul de Chrome DevTools */
+  --ifm-color-primary: #4285f4;
+  --ifm-color-primary-dark: #2a75f3;
+  --ifm-color-primary-darker: #196bf2;
+  --ifm-color-primary-darkest: #0c55d7;
+  --ifm-color-primary-light: #5a95f5;
+  --ifm-color-primary-lighter: #699ff6;
+  --ifm-color-primary-lightest: #8fb8f8;
+  
+  /* Colores secundarios */
+  --ifm-color-secondary: #34a853;
+  --ifm-color-secondary-dark: #2f974b;
+  --ifm-color-secondary-darker: #2c8f47;
+  --ifm-color-secondary-darkest: #24763a;
+  --ifm-color-secondary-light: #39b95b;
+  --ifm-color-secondary-lighter: #3dbe5f;
+  --ifm-color-secondary-lightest: #52c771;
+  
+  /* Colores acento */
+  --accent-red: #ea4335;
+  --accent-yellow: #fbbc04;
+  
+  /* Estilos de fuente */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', SFMono-Regular, monospace;
+  --ifm-heading-font-weight: 600;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /* Bordes y espaciado */
+  --ifm-global-radius: 6px;
+  --ifm-card-border-radius: 8px;
+  --ifm-button-border-radius: 6px;
+  
+  /* Fondos y sombreado para modo claro */
+  --ifm-navbar-background-color: #f8f9fa;
+  --ifm-navbar-color: #202124;
+  --ifm-navbar-link-color: #202124;
+  --ifm-navbar-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8f9fa;
+  --ifm-toc-border-color: #e8eaed;
+  --docusaurus-highlighted-code-line-bg: rgba(66, 133, 244, 0.1);
+  
+  /* Colores personalizados para modo claro */
+  --devtools-bg: #f8f9fa;
+  --devtools-text: #202124;
+  --devtools-border: #dadce0;
+  --devtools-panel-bg: #ffffff;
+  --custom-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --custom-hero-bg: linear-gradient(135deg, rgba(66, 133, 244, 0.1), rgba(52, 168, 83, 0.1));
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Tema oscuro - similar a las DevTools */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #8ab4f8;
+  --ifm-color-primary-dark: #69a1f7;
+  --ifm-color-primary-darker: #5895f6;
+  --ifm-color-primary-darkest: #2471f3;
+  --ifm-color-primary-light: #abc7f9;
+  --ifm-color-primary-lighter: #bcd3fa;
+  --ifm-color-primary-lightest: #eef3fe;
+  
+  /* Fondos y bordes en modo oscuro */
+  --ifm-background-color: #202124;
+  --ifm-background-surface-color: #292a2d;
+  --ifm-navbar-background-color: #202124;
+  --ifm-navbar-color: #e8eaed;
+  --ifm-navbar-link-color: #e8eaed;
+  --ifm-toc-border-color: #5f6368;
+  --docusaurus-highlighted-code-line-bg: rgba(138, 180, 248, 0.1);
+  
+  /* Colores personalizados en modo oscuro */
+  --devtools-panel-bg: #292a2d;
+  --devtools-text: #e8eaed;
+  --devtools-border: #5f6368;
+  --custom-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  --custom-hero-bg: linear-gradient(135deg, rgba(66, 133, 244, 0.15), rgba(52, 168, 83, 0.15));
+}
+
+/* Estilo general */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--devtools-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+}
+
+/* Barra de navegación */
+.navbar {
+  background-color: var(--ifm-navbar-background-color);
+  color: var(--ifm-navbar-color);
+  box-shadow: 0 1px 0 0 var(--devtools-border);
+  height: 48px;
+  padding: 0 16px;
+}
+
+.navbar__brand {
+  color: var(--ifm-navbar-color);
+  font-weight: 600;
+}
+
+.navbar__logo {
+  height: 24px;
+  margin-right: 8px;
+}
+
+.navbar__item {
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+.navbar__link {
+  color: var(--ifm-navbar-color) !important;
+  font-weight: 500;
+  position: relative;
+  padding: 0 8px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-primary) !important;
+  background-color: transparent;
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary) !important;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+/* Icono de GitHub */
+.header-github-link:after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23202124' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme='dark'] .header-github-link:after {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23e8eaed' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+/* Mejorar el sidebar */
+.menu {
+  padding: 0;
+  font-weight: 400;
+  font-size: 13px;
+  background-color: var(--ifm-background-surface-color);
+  border-right: 1px solid var(--devtools-border);
+}
+
+.menu__list {
+  padding: 8px 0;
+}
+
+.menu__link {
+  border-radius: 0;
+  transition: all 0.2s ease;
+  padding: 6px 16px;
+  color: var(--devtools-text);
+}
+
+.menu__link:hover {
+  background-color: rgba(66, 133, 244, 0.08);
+}
+
+li > a.menu__link {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu__link--active {
+  font-weight: 500;
+  background-color: rgba(66, 133, 244, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+/* Estilizar hero section */
+.hero {
+  padding: 60px 40px;
+  background: var(--custom-hero-bg);
+  color: var(--devtools-text);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Botón de tutorial */
+.button {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.button:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Características/Cards */
+.features {
+  padding: 48px 0;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.feature-item {
+  background-color: var(--devtools-panel-bg);
+  border: 1px solid var(--devtools-border);
+  border-radius: 6px;
+  padding: 24px;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+.feature-title {
+  color: var(--ifm-color-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+/* Mejorar contenido de documentación */
+.markdown {
+  padding: 16px;
+}
+
+.markdown > h2 {
+  font-size: 1.5rem;
+  margin-top: 32px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--devtools-border);
+  color: var(--devtools-text);
+}
+
+.markdown > h3 {
+  font-size: 1.25rem;
+  margin-top: 24px;
+  color: var(--devtools-text);
+}
+
+/* Bloques de código */
+.markdown code {
+  background-color: rgba(66, 133, 244, 0.1);
+  border: 1px solid rgba(66, 133, 244, 0.2);
+  padding: 2px 4px;
+  font-size: 90%;
+  color: var(--devtools-text);
+}
+
+/* Tabla de contenidos */
+.table-of-contents {
+  padding: 16px;
+  border-left: 2px solid var(--ifm-color-primary);
+  font-size: 13px;
+}
+
+.table-of-contents__link {
+  display: block;
+  padding: 4px 0;
+  color: var(--devtools-text);
+}
+
+.table-of-contents__link--active {
+  font-weight: 500;
+  color: var(--ifm-color-primary);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--ifm-background-surface-color);
+  color: var(--devtools-text);
+  padding: 32px 0;
+  font-size: 13px;
+  border-top: 1px solid var(--devtools-border);
+}
+
+.footer__link-item {
+  color: var(--devtools-text);
+  opacity: 0.8;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary);
+  opacity: 1;
+}
+
+/* Scroll bar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-surface-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--devtools-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
+/* Simulación del Inspector de Elementos en la página principal */
+.devtools-window {
+  background-color: var(--devtools-panel-bg);
+  border: 1px solid var(--devtools-border);
+  border-radius: 6px;
+  box-shadow: var(--custom-shadow);
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: hidden;
+}
+
+.devtools-header {
+  display: flex;
+  background-color: var(--devtools-bg);
+  border-bottom: 1px solid var(--devtools-border);
+  padding: 0;
+}
+
+.devtools-tab {
+  padding: 6px 16px;
+  font-size: 13px;
+  border-right: 1px solid var(--devtools-border);
+  color: var(--devtools-text);
+}
+
+.devtools-tab.active {
+  background-color: var(--devtools-panel-bg);
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.devtools-content {
+  display: flex;
+  height: 250px;
+}
+
+.html-panel {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  border-right: 1px solid var(--devtools-border);
+  background-color: var(--devtools-panel-bg);
+  color: var(--devtools-text);
+}
+
+.css-panel {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  background-color: var(--devtools-panel-bg);
+  color: var(--devtools-text);
+}
+
+/* Colores sintácticos para HTML/CSS */
+.html-tag {
+  color: #9c27b0;
+}
+
+.html-attr {
+  color: #ff9800;
+}
+
+.html-value {
+  color: #4caf50;
+}
+
+.css-selector {
+  color: #2196f3;
+}
+
+.css-prop {
+  color: #ff9800;
+  margin-left: 20px;
+}
+
+.css-value {
+  color: #4caf50;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 996px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .feature-item {
+    margin-bottom: 2rem;
+  }
+  
+  .devtools-content {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .html-panel, .css-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--devtools-border);
+  }
+}
+
+/* SOLUCIÓN FINAL PARA LA BARRA BLANCA EN MODO OSCURO */
+
+/* Este código debe colocarse al FINAL de tu archivo custom.css */
+
+/* Reset completo para las variables en modo oscuro */
+[data-theme='dark'] {
+  --devtools-bg: #292a2d !important;
+  --devtools-panel-bg: #292a2d !important;
+  --devtools-text: #e8eaed !important;
+  --devtools-border: #5f6368 !important;
+}
+
+/* Selector super específico para toda la ventana del inspector */
+html[data-theme='dark'] .inspectorWindow {
+  background-color: #202124 !important;
+  border-color: #5f6368 !important;
+}
+
+/* Forzar colores oscuros en la barra de pestañas */
+html[data-theme='dark'] .inspectorToolbar {
+  background-color: #202124 !important;
+  border-color: #5f6368 !important;
+}
+
+/* Específicamente apuntar a cada pestaña */
+html[data-theme='dark'] .inspectorTab {
+  color: #e8eaed !important;
+  background-color: #202124 !important;
+  border-color: #5f6368 !important;
+}
+
+/* Estilo específico para pestaña activa */
+html[data-theme='dark'] .inspectorTab.active {
+  background-color: #292a2d !important;
+  color: #8ab4f8 !important;
+  border-bottom: 2px solid #8ab4f8 !important;
+}
+
+/* Super específico para el contenido */
+html[data-theme='dark'] .inspectorContent {
+  background-color: #292a2d !important;
+}
+
+/* Enfoque directo a cada panel */
+html[data-theme='dark'] .inspectorContent > div,
+html[data-theme='dark'] .inspectorWindow .inspectorContent .fullWidthPanel,
+html[data-theme='dark'] .inspectorWindow .inspectorContent .htmlTree,
+html[data-theme='dark'] .inspectorWindow .inspectorContent .cssPanel {
+  background-color: #292a2d !important;
+  color: #e8eaed !important;
+}
+
+/* Forzar color para todos los elementos pre y sus hijos */
+html[data-theme='dark'] .inspectorWindow pre,
+html[data-theme='dark'] .inspectorWindow pre * {
+  color: #e8eaed !important;
+  background-color: transparent !important;
+}
+
+/* Estilo específico para elementos de la consola */
+html[data-theme='dark'] .consoleCommand,
+html[data-theme='dark'] .console-command {
+  color: #75bfff !important;
+}
+
+html[data-theme='dark'] .consoleResult,
+html[data-theme='dark'] .console-result {
+  color: #e8eaed !important;
+}
+
+/* Asegurar que todas las pestañas y su contenido sean oscuros */
+html[data-theme='dark'] [role="tabpanel"],
+html[data-theme='dark'] [role="tab"] {
+  background-color: #292a2d !important;
+  color: #e8eaed !important;
+}
+
+/* Forzar color para todo elemento dentro del inspector */
+html[data-theme='dark'] .inspectorWindow * {
+  color: inherit;
+}
+
+/* Forzar fondo para elementos específicos */
+html[data-theme='dark'] .networkTable,
+html[data-theme='dark'] .networkHeader,
+html[data-theme='dark'] .networkRow,
+html[data-theme='dark'] .performanceGraph {
+  background-color: #292a2d !important;
+  color: #e8eaed !important;
+  border-color: #5f6368 !important;
+}
+
+/* Preservar los colores sintácticos */
+html[data-theme='dark'] .htmlTag,
+html[data-theme='dark'] .html-tag {
+  color: #ce93d8 !important;
+}
+
+html[data-theme='dark'] .htmlAttr,
+html[data-theme='dark'] .html-attr {
+  color: #ffb74d !important;
+}
+
+html[data-theme='dark'] .htmlValue,
+html[data-theme='dark'] .html-value {
+  color: #81c784 !important;
+}
+
+html[data-theme='dark'] .cssSelector,
+html[data-theme='dark'] .css-selector {
+  color: #64b5f6 !important;
+}
+
+html[data-theme='dark'] .cssProp,
+html[data-theme='dark'] .css-prop {
+  color: #ffb74d !important;
+}
+
+html[data-theme='dark'] .cssValue,
+html[data-theme='dark'] .css-value {
+  color: #81c784 !important;
+}
+
+/* Esta línea es crítica - forzar fondo transparente para pre en Console */
+html[data-theme='dark'] .fullWidthPanel pre {
+  background-color: transparent !important;
+  color: #e8eaed !important;
+}
+
+/* Botón de tutorial personalizado */
+.inspector-tutorial-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--ifm-color-primary);
+  color: white !important;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inspector-tutorial-button:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Mejoras de visibilidad para el navbar en modo claro */
+
+/* Asegurar que el texto del título sea visible en modo claro */
+[data-theme='light'] .navbar__title,
+[data-theme='light'] .navbar__link,
+[data-theme='light'] .navbar__items {
+  color: #202124 !important;
+}
+
+/* Asegurar que los elementos del navbar sean visibles */
+[data-theme='light'] .navbar {
+  background-color: #f8f9fa !important;
+  color: #202124 !important;
+}
+
+/* Mejorar visibilidad de links en modo claro */
+[data-theme='light'] .navbar__link:hover {
+  color: #4285f4 !important; /* Color azul de Google */
+}
+
+/* Asegurar que el item activo sea visible */
+[data-theme='light'] .navbar__link--active {
+  color: #4285f4 !important;
+  font-weight: 600;
+}
+
+/* Ajustar color del logo y título en modo claro */
+[data-theme='light'] .navbar__brand {
+  color: #202124 !important;
+}
+
+/* Asegurar que el icono de búsqueda sea visible */
+[data-theme='light'] .navbar-search-button {
+  color: #202124 !important;
+}
+
+/* Mejorar contraste de MDN Web Docs link */
+[data-theme='light'] a[href^="https://developer.mozilla.org"] {
+  color: #202124 !important;
+  font-weight: 500;
+}
+
+/* Ajustar el color de los botones del navbar en modo claro */
+[data-theme='light'] .navbar button {
+  color: #202124 !important;
+}
+
+/* Hacer que el selector de tema sea visible */
+[data-theme='light'] .clean-btn {
+  color: #202124 !important;
+}
+
+/* Ajustar color del ícono de GitHub */
+[data-theme='light'] .header-github-link::after {
+  background-color: #202124;
+}
+
+/* CSS para arreglar la posición de los íconos en el sidebar */
+/* Añade esto a tu archivo custom.css */
+
+/* Ajustes para el contenedor del menú */
+.menu__list-item {
+  position: relative;
+}
+
+/* Empujar el contenido para hacer espacio para el ícono */
+.category-with-icon-fa-solid-fa-book .menu__link,
+.category-with-icon-fa-solid-fa-code .menu__link,
+.category-with-icon-fa-solid-fa-terminal .menu__link,
+.category-with-icon-fa-solid-fa-network-wired .menu__link,
+.category-with-icon-fa-solid-fa-tachometer-alt .menu__link,
+.category-with-icon-fa-solid-fa-database .menu__link,
+.category-with-icon-fa-solid-fa-bug .menu__link,
+.category-with-icon-fa-solid-fa-mobile-alt .menu__link,
+.category-with-icon-fa-solid-fa-lightbulb .menu__link,
+.category-with-icon-fa-solid-fa-thumbs-up .menu__link {
+  padding-left: 36px;
+}
+
+/* Asegurar que los íconos sean visibles con buen contraste */
+.sidebar-item-icon {
+  color: var(--ifm-menu-color);
+}
+
+[data-theme='dark'] .sidebar-item-icon {
+  color: var(--ifm-color-primary-lighter);
+}
+
+[data-theme='light'] .sidebar-item-icon {
+  color: var(--ifm-color-primary-darker);
+}
+
+/* Hacer que los íconos sean un poco más pequeños */
+.sidebar-item-icon i {
+  font-size: 0.9rem;
+}
+
+/* Espacio adicional para los elementos secundarios */
+.menu__list .menu__list {
+  margin-left: 20px !important;
+}
+
+/* Ajuste para subcategorías */
+.menu__list-item-collapsible {
+  position: relative;
 }

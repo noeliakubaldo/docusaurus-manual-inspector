@@ -2,8 +2,7 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-
-.heroBanner {
+ .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
@@ -20,4 +19,422 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
+}
+
+.timer-icon {
+  animation: pulse 2s infinite;
+  display: inline-block;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Simulación de una ventana del inspector */
+.inspectorPreview {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.inspectorWindow {
+  background-color: var(--devtools-panel-bg);
+  border: 1px solid var(--devtools-border);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.inspectorToolbar {
+  display: flex;
+  background-color: var(--devtools-bg);
+  border-bottom: 1px solid var(--devtools-border);
+  padding: 0;
+}
+
+.inspectorTab {
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  border-right: 1px solid var(--devtools-border);
+  color: var(--devtools-text);
+}
+
+.inspectorTab:first-child {
+  background-color: var(--devtools-panel-bg);
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.inspectorContent {
+  display: flex;
+  height: 300px;
+}
+
+/* Estilos para tabs activos */
+.inspectorTab.active {
+  background-color: var(--devtools-panel-bg);
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+/* Panel de ancho completo para console, network y performance */
+.fullWidthPanel {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  height: 300px;
+  background-color: var(--devtools-panel-bg);
+  color: var(--devtools-text);
+}
+
+/* Clases para mejorar la visualización de la consola */
+.consoleCommand {
+  color: #75bfff; /* Azul para comandos */
+  font-weight: normal;
+}
+
+.consoleResult {
+  color: #333333; /* Color oscuro para tema claro */
+}
+
+/* Ajustes para el tema oscuro */
+:global([data-theme='dark']) .consoleResult {
+  color: #e8eaed; /* Color claro para tema oscuro */
+}
+
+/* Mejor contraste para los paneles en tema oscuro */
+:global([data-theme='dark']) .fullWidthPanel {
+  background-color: #202124; /* Color de fondo más oscuro */
+  color: #e8eaed; /* Color de texto más claro */
+}
+
+/* Mejorar la visibilidad de los paneles en modo oscuro */
+:global([data-theme='dark']) .inspectorContent {
+  background-color: #202124;
+}
+
+/* Mejor contraste para elementos específicos de la consola */
+:global([data-theme='dark']) .networkHeader,
+:global([data-theme='dark']) .networkRow {
+  border-color: #5f6368; /* Color de borde más visible */
+}
+
+/* Estilos para la tabla de network */
+.networkTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.networkHeader {
+  display: flex;
+  font-weight: bold;
+  border-bottom: 1px solid var(--devtools-border);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.networkHeader span {
+  flex: 1;
+  padding: 4px;
+}
+
+.networkRow {
+  display: flex;
+  border-bottom: 1px solid var(--devtools-border);
+  padding: 8px 0;
+}
+
+.networkRow span {
+  flex: 1;
+  padding: 4px;
+}
+
+/* Gráfico de rendimiento */
+.performanceGraph {
+  display: flex;
+  height: 200px;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 20px;
+}
+
+.performanceBar {
+  flex: 1;
+  background: linear-gradient(to top, var(--ifm-color-primary-darkest), var(--ifm-color-primary));
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  color: white;
+  font-size: 12px;
+  transition: height 0.3s ease;
+}
+
+.htmlTree {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  border-right: 1px solid var(--devtools-border);
+}
+
+.cssPanel {
+  flex: 1;
+  padding: 16px;
+  overflow: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 13px;
+  background-color: var(--devtools-panel-bg);
+}
+
+/* Colores sintácticos */
+.htmlTag {
+  color: #9c27b0;
+}
+
+.htmlAttr {
+  color: #ff9800;
+}
+
+.htmlValue {
+  color: #4caf50;
+}
+
+.cssSelector {
+  color: #2196f3;
+}
+
+.cssProp {
+  color: #ff9800;
+  padding-left: 20px;
+}
+
+.cssValue {
+  color: #4caf50;
+}
+
+/* Sección de características */
+.features {
+  padding: 48px 0;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.featuresTitle {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 2rem;
+  color: var(--ifm-color-primary);
+}
+
+.featureIcon {
+  font-size: 48px;
+  color: var(--ifm-color-primary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.featureDescription {
+  font-size: 14px;
+  color: var(--devtools-text);
+  line-height: 1.6;
+}
+
+/* Sección de tutoriales */
+.tutorials {
+  padding: 60px 0;
+  background-color: var(--devtools-bg);
+  color: var(--devtools-text);
+}
+
+.tutorialsTitle {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 2rem;
+  color: var(--ifm-color-primary);
+}
+
+.tutorialCard {
+  background-color: var(--devtools-panel-bg);
+  border: 1px solid var(--devtools-border);
+  border-radius: 6px;
+  padding: 24px;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.tutorialCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+.tutorialCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tutorialCardHeader i {
+  font-size: 24px;
+  color: var(--ifm-color-primary);
+}
+
+.tutorialCardHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.tutorialLink {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tutorialLink:hover {
+  transform: translateX(4px);
+  text-decoration: none;
+}
+
+/* Animaciones para la página */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Herramientas del inspector */
+.toolGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.toolCard {
+  background-color: var(--devtools-panel-bg);
+  border: 1px solid var(--devtools-border);
+  border-radius: 8px;
+  padding: 24px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.toolCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+.toolIcon {
+  font-size: 32px;
+  color: var(--ifm-color-primary);
+  margin-bottom: 16px;
+}
+
+.toolTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--ifm-color-primary);
+}
+
+.toolDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--devtools-text);
+}
+
+/* Tablero de atajos */
+.shortcutsTable {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.shortcutsTable thead {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.shortcutsTable th {
+  padding: 12px 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.shortcutsTable tbody tr {
+  background-color: var(--devtools-panel-bg);
+  border-bottom: 1px solid var(--devtools-border);
+}
+
+.shortcutsTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.shortcutsTable td {
+  padding: 12px 16px;
+}
+
+.shortcutKey {
+  display: inline-block;
+  background-color: var(--devtools-bg);
+  border: 1px solid var(--devtools-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .toolGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .inspectorContent {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .htmlTree, .cssPanel {
+    height: 200px;
+  }
+  
+  .htmlTree {
+    border-right: none;
+    border-bottom: 1px solid var(--devtools-border);
+  }
 }
