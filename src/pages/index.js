@@ -142,7 +142,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="inspector-tutorial-button"
-            to="/docusaurus/docs/Introducción/introduccion">
+            to="/docs/Introducción/intro">
             ¡Aprende ya!
           </Link>
         </div>
