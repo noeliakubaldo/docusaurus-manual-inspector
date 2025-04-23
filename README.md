@@ -39,3 +39,12 @@ $ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+### Enlaces de visualización:
+
+Aquí puedes acceder a la documentación de **Inspector de Elementos**:
+
+- [Sitio en GitHub Pages](https://noeliakubaldo.github.io/docusaurus-manual-inspector/)
+- [Sitio en cPanel](https://948250274.facturalo.co/docusaurus/)
+
+Visita los enlaces para explorar el contenido.
